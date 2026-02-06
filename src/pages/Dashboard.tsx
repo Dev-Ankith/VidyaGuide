@@ -11,6 +11,7 @@ import { SkillGaps } from '@/components/dashboard/SkillGaps';
 import { MissingKeywords } from '@/components/dashboard/MissingKeywords';
 import { ResumeImprovements } from '@/components/dashboard/ResumeImprovements';
 import { LearningRoadmap } from '@/components/dashboard/LearningRoadmap';
+import { RecruiterRecommendations } from '@/components/dashboard/RecruiterRecommendations';
 import { ProjectIdeas } from '@/components/dashboard/ProjectIdeas';
 import { FeedbackPanel } from '@/components/dashboard/FeedbackPanel';
 import { AnalysisSkeleton } from '@/components/dashboard/AnalysisSkeleton';
@@ -74,7 +75,7 @@ export default function Dashboard() {
 
   const handleRoadmapToggle = (weekIndex: number) => {
     if (!results) return;
-    
+
     const updatedRoadmap = [...results.roadmap];
     updatedRoadmap[weekIndex] = {
       ...updatedRoadmap[weekIndex],
@@ -97,7 +98,7 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       <main className="pt-20 pb-12">
         <div className="container mx-auto px-4">
           {/* Header */}
@@ -127,11 +128,10 @@ export default function Dashboard() {
                   { num: 3, label: 'Get Analysis', icon: Sparkles },
                 ].map((s, i) => (
                   <div key={s.num} className="flex items-center gap-2">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                      i === 0 && resumeFile ? 'bg-secondary text-secondary-foreground' :
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${i === 0 && resumeFile ? 'bg-secondary text-secondary-foreground' :
                       i === 1 && targetRole && experienceLevel ? 'bg-secondary text-secondary-foreground' :
-                      'bg-muted text-muted-foreground'
-                    }`}>
+                        'bg-muted text-muted-foreground'
+                      }`}>
                       {s.num}
                     </div>
                     <span className="text-sm text-muted-foreground hidden sm:inline">{s.label}</span>
@@ -225,6 +225,11 @@ export default function Dashboard() {
 
               {/* Resume Improvements */}
               <ResumeImprovements improvements={results.resumeImprovements} />
+
+              {/* Recruiter Recommendations - only show if score >= 75 */}
+              {results.score >= 75 && results.recruiters && (
+                <RecruiterRecommendations recruiters={results.recruiters} />
+              )}
 
               {/* Learning Roadmap - only show if score < 75 */}
               {results.score < 75 && (

@@ -1,0 +1,6 @@
+Resume
+John Doe
+Experience: Software Engineer with 5 years of experience in Node.js and React.
+Skills: JavaScript, TypeScript, Express, MongoDB.
+Education: Bachelor of Science in Computer Science.
+Contact: john.doe@example.com

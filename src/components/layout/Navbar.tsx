@@ -20,14 +20,14 @@ export function Navbar() {
 
   const navLinks = isAuthenticated
     ? [
-        { href: '/dashboard', label: 'Dashboard' },
-        { href: '/roadmap', label: 'Roadmap' },
-        { href: '/tips', label: 'Resume Tips' },
-      ]
+      { href: '/dashboard', label: 'Dashboard' },
+      { href: '/roadmap', label: 'Roadmap' },
+      { href: '/tips', label: 'Resume Tips' },
+    ]
     : [
-        { href: '/#features', label: 'Features' },
-        { href: '/#how-it-works', label: 'How It Works' },
-      ];
+      { href: '/#features', label: 'Features' },
+      { href: '/#how-it-works', label: 'How It Works' },
+    ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
@@ -41,9 +41,8 @@ export function Navbar() {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  location.pathname === link.href ? 'text-primary' : 'text-muted-foreground'
-                }`}
+                className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === link.href ? 'text-primary' : 'text-muted-foreground'
+                  }`}
               >
                 {link.label}
               </Link>
