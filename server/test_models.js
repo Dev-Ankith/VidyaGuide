@@ -15,7 +15,7 @@ async function run() {
             const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
             await model.generateContent("Hello");
             console.log("SUCCESS: gemini-1.5-flash works.");
-        } catch (e) { console.log("FAIL: gemini-1.5-flash", e.message.substring(0, 100)); }
+        } catch (e) { console.log("FAIL: gemini-1.5-flash", e); }
 
         console.log("Testing gemini-pro...");
         try {

@@ -23,6 +23,7 @@ export function Navbar() {
       { href: '/dashboard', label: 'Dashboard' },
       { href: '/roadmap', label: 'Roadmap' },
       { href: '/tips', label: 'Resume Tips' },
+      { href: '/resume-builder', label: 'Build Resume' },
     ]
     : [
       { href: '/#features', label: 'Features' },
